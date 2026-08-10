@@ -1,0 +1,178 @@
+{
+  "entities": {
+    "disposisi": {
+      "title": "Disposisi",
+      "description": "Surat masuk yang didisposisikan pimpinan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number", "description": "ID Unix Timestamp" },
+        "no": { "type": "string", "description": "Nomor Surat" },
+        "fr": { "type": "string", "description": "Pengirim" },
+        "tgl_s": { "type": "string", "description": "Tanggal Surat" },
+        "tgl_t": { "type": "string", "description": "Tanggal Terima" },
+        "hl": { "type": "string", "description": "Perihal" },
+        "st": { "type": "string", "description": "Status Disposisi" },
+        "to": { "type": "string", "description": "Diteruskan kepada" },
+        "ct": { "type": "string", "description": "Catatan pimpinan" },
+        "fi_url": { "type": "string", "description": "URL lampiran berkas" }
+      },
+      "required": ["id", "no", "fr", "hl"]
+    },
+    "surat_keluar": {
+      "title": "Surat Keluar",
+      "description": "Dokumen surat keluar satuan pendidikan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number", "description": "ID Unix Timestamp" },
+        "no": { "type": "string", "description": "Nomor Surat" },
+        "tgl": { "type": "string", "description": "Tanggal Surat" },
+        "bdg": { "type": "string", "description": "Bidang / Asal" },
+        "to": { "type": "string", "description": "Tujuan" },
+        "hl": { "type": "string", "description": "Perihal" },
+        "ttd": { "type": "string", "description": "Penandatangan" },
+        "j": { "type": "string", "description": "Jenis Surat" },
+        "fi_url": { "type": "string", "description": "URL lampiran berkas" },
+        "st": { "type": "string", "description": "Status Proses" }
+      },
+      "required": ["id", "no", "to", "hl"]
+    },
+    "tembusan": {
+      "title": "Tembusan",
+      "description": "Tembusan surat yang dikirim ke unit",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number", "description": "ID Unix Timestamp" },
+        "no": { "type": "string", "description": "Nomor Surat" },
+        "to": { "type": "string", "description": "Tujuan" },
+        "hl": { "type": "string", "description": "Perihal" },
+        "unit": { "type": "string", "description": "Unit Pengirim" },
+        "fi_url": { "type": "string", "description": "URL file surat" }
+      },
+      "required": ["id", "no", "to", "hl", "unit"]
+    },
+    "arsip": {
+      "title": "Arsip Dokumen",
+      "description": "Penyimpanan dokumen digital penting",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number", "description": "ID Unix Timestamp" },
+        "no": { "type": "string", "description": "Nomor Dokumen" },
+        "tgl_up": { "type": "string", "description": "Tanggal Upload" },
+        "kat": { "type": "string", "description": "Kategori Arsip" },
+        "hl": { "type": "string", "description": "Nama Dokumen / Perihal" },
+        "desc": { "type": "string", "description": "Keterangan Dokumen" },
+        "fi_url": { "type": "string", "description": "URL file arsip" }
+      },
+      "required": ["id", "no", "hl", "kat"]
+    },
+    "logs": {
+      "title": "Log Aktivitas",
+      "description": "Riwayat aktivitas aksi pengguna di sistem",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number", "description": "ID Unix Timestamp" },
+        "user": { "type": "string", "description": "Username pelaku" },
+        "act": { "type": "string", "description": "Aksi yang dilakukan" },
+        "tgl": { "type": "string", "description": "Waktu aktivitas" }
+      },
+      "required": ["id", "user", "act"]
+    },
+    "bidang": {
+      "title": "Master Bidang",
+      "description": "Data master bidang internal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID/Kode Bidang" },
+        "code": { "type": "string", "description": "Kode Singkat" },
+        "name": { "type": "string", "description": "Nama Lengkap Bidang" }
+      },
+      "required": ["id", "code", "name"]
+    },
+    "pejabat": {
+      "title": "Master Pejabat",
+      "description": "Data pejabat penandatangan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID Pejabat" },
+        "nama": { "type": "string", "description": "Nama Pejabat beserta gelar" },
+        "isDefault": { "type": "boolean", "description": "Apakah penandatangan default" }
+      },
+      "required": ["id", "nama"]
+    },
+    "kategori": {
+      "title": "Master Kategori Arsip",
+      "description": "Data kategori klasifikasi arsip",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID Kategori" },
+        "nama": { "type": "string", "description": "Nama Kategori" }
+      },
+      "required": ["id", "nama"]
+    },
+    "jenissurat": {
+      "title": "Master Jenis Surat",
+      "description": "Data jenis klasifikasi surat",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID Jenis" },
+        "nama": { "type": "string", "description": "Nama Jenis Surat" }
+      },
+      "required": ["id", "nama"]
+    },
+    "users": {
+      "title": "Kredensial Pengguna",
+      "description": "Data akun login lokal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Username / ID" },
+        "username": { "type": "string", "description": "Username login" },
+        "name": { "type": "string", "description": "Nama Tampilan" },
+        "role": { "type": "string", "description": "Role (admin/pimpinan/unit)" },
+        "pass": { "type": "string", "description": "Password Base64" }
+      },
+      "required": ["id", "username", "name", "role", "pass"]
+    }
+  },
+  "firestore": {
+    "/disposisi/{id}": {
+      "schema": "disposisi",
+      "description": "Koleksi data Disposisi"
+    },
+    "/surat_keluar/{id}": {
+      "schema": "surat_keluar",
+      "description": "Koleksi data Surat Keluar"
+    },
+    "/tembusan/{id}": {
+      "schema": "tembusan",
+      "description": "Koleksi data Tembusan"
+    },
+    "/arsip/{id}": {
+      "schema": "arsip",
+      "description": "Koleksi data Arsip Dokumen"
+    },
+    "/logs/{id}": {
+      "schema": "logs",
+      "description": "Koleksi data Log Aktivitas"
+    },
+    "/bidang/{id}": {
+      "schema": "bidang",
+      "description": "Koleksi data Master Bidang"
+    },
+    "/pejabat/{id}": {
+      "schema": "pejabat",
+      "description": "Koleksi data Master Pejabat"
+    },
+    "/kategori/{id}": {
+      "schema": "kategori",
+      "description": "Koleksi data Master Kategori Arsip"
+    },
+    "/jenis_surat/{id}": {
+      "schema": "jenissurat",
+      "description": "Koleksi data Master Jenis Surat"
+    },
+    "/users/{id}": {
+      "schema": "users",
+      "description": "Koleksi data Kredensial Pengguna"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+--- src/logic3.ts
++++ src/logic3.ts
+@@ -194,6 +194,7 @@
+ 
+     const hasFirestoreData = (fsDisp && fsDisp.length > 0) || (fsSK && fsSK.length > 0) || (fsArsip && fsArsip.length > 0);
+ 
++    if (!w.realtimeInitialized) w.initRealtimeListeners();
++
+     if (hasFirestoreData) {
+       w.disposisiData = (fsDisp || []).sort((a: any, b: any) => (b.id || 0) - (a.id || 0));
+       w.suratKeluarData = (fsSK || []).sort((a: any, b: any) => (b.id || 0) - (a.id || 0));
